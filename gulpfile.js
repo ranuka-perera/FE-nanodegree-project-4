@@ -34,7 +34,7 @@ var onError = function (err) {
 var htmlFilter = filter('**/*.htm?(l)');
 
 gulp.task('minMain', function() {
-    var assets = useref.assets(); // Add in the resources used in the HTMLs.
+    var assets = useref.assets({searchPath: './src'}); // Add in the resources used in the HTMLs.
     return gulp.src('src/*.htm?(l)')
         .pipe(inlineSource({compress: false}))  //Inline js files. Don't compress because we are doing it separately.
         .pipe(assets)  //Load the list of js & css files defined in the HTML. (Remove the HTML)
@@ -86,6 +86,15 @@ gulp.task('minifyImages', function (){
         }))
         .pipe(imagemin({
             progressive: true
+        }))
+        .pipe(gulp.dest('./dist/'));
+});
+
+// Copy images instead of minifying. In case gulp-imagemin is not properly setup.
+gulp.task('copyImages', function (){
+    gulp.src(['src/**/im{g,ages}/*.jp?(e)g', 'src/**/im{g,ages}/*.png'])
+        .pipe(plumber({
+            errorHandler: onError
         }))
         .pipe(gulp.dest('./dist/'));
 });
