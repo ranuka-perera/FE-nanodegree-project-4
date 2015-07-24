@@ -31,10 +31,11 @@ var onError = function (err) {
      console.error(err);
      this.emit('end');
     };
-var htmlFilter = filter('**/*.htm?(l)');
 
 gulp.task('minMain', function() {
+    var htmlFilter = filter('**/*.htm?(l)');
     var assets = useref.assets({searchPath: './src'}); // Add in the resources used in the HTMLs.
+
     return gulp.src('src/*.htm?(l)')
         .pipe(inlineSource({compress: false}))  //Inline js files. Don't compress because we are doing it separately.
         .pipe(assets)  //Load the list of js & css files defined in the HTML. (Remove the HTML)
@@ -58,7 +59,9 @@ gulp.task('minMain', function() {
 // https://github.com/jonkemp/gulp-useref/issues/87
 // https://github.com/jonkemp/gulp-useref/issues/106
 gulp.task('minPizza', function() {
+    var htmlFilter = filter('**/*.htm?(l)');
     var assets = useref.assets({searchPath: './src/views'}); // Add in the resources used in the HTMLs.
+
     return gulp.src('src/views/*.htm?(l)')
         .pipe(inlineSource({compress: false}))  //Inline js files. Don't compress because we are doing it separately.
         .pipe(assets)  //Load the list of js & css files defined in the HTML. (Remove the HTML)
@@ -71,7 +74,7 @@ gulp.task('minPizza', function() {
         .pipe(assets.restore()) //Restore the HTML files back into the virtual file system.
         .pipe(useref())  //Restore original files with new minified names.
         .pipe(revReplace())  //Replace minified names with hash-appended minified names.
-        .pipe(htmlFilter)// !Important, without this you risk sending the js file to the html minifier and waste a day debugging it.
+        .pipe(htmlFilter)// !Important, without this you risk sending the js file to the html minifier and waste a whole day debugging it.
         .pipe(minifyHTML())  //Minify the HTML files.
         .pipe(minifyInline())  //Minify the script tags in the HTML.
         .pipe(htmlFilter.restore())
