@@ -42,15 +42,15 @@ gulp.task('minMain', function() {
         .pipe(plumber({ //Set Error handling to display only.
             errorHandler: onError
         }))
-        .pipe(gulpif('*.js', uglify()))  //Minify JS
-        .pipe(gulpif('*.css', minifyCSS({keepSpecialComments: 0})))  //Minify CSS
+        //.pipe(gulpif('*.js', uglify()))  //Minify JS
+        //.pipe(gulpif('*.css', minifyCSS({keepSpecialComments: 0})))  //Minify CSS
         .pipe(rev())  //Append hash to make each build unique. (when caching)
         .pipe(assets.restore()) //Restore the HTML files back into the virtual file system.
         .pipe(useref())  //Restore original files with new minified names.
         .pipe(revReplace())  //Replace minified names with hash-appended minified names.
         .pipe(htmlFilter)
-        .pipe(minifyHTML())  //Minify the HTML files.
-        .pipe(minifyInline())  //Minify the script tags in the HTML.
+        //.pipe(minifyHTML())  //Minify the HTML files.
+        //.pipe(minifyInline())  //Minify the script tags in the HTML.
         .pipe(htmlFilter.restore())
         .pipe(gulp.dest('./dist/'));
 });
@@ -68,15 +68,15 @@ gulp.task('minPizza', function() {
         .pipe(plumber({ //Set Error handling to display only.
             errorHandler: onError
         }))
-        .pipe(gulpif('*.js', uglify()))  //Minify JS
-        .pipe(gulpif('*.css', minifyCSS({keepSpecialComments: 0})))  //Minify CSS
+        //.pipe(gulpif('*.js', uglify()))  //Minify JS
+        //.pipe(gulpif('*.css', minifyCSS({keepSpecialComments: 0})))  //Minify CSS
         .pipe(rev())  //Append hash to make each build unique. (when caching)
         .pipe(assets.restore()) //Restore the HTML files back into the virtual file system.
         .pipe(useref())  //Restore original files with new minified names.
         .pipe(revReplace())  //Replace minified names with hash-appended minified names.
         .pipe(htmlFilter)// !Important, without this you risk sending the js file to the html minifier and waste a whole day debugging it.
-        .pipe(minifyHTML())  //Minify the HTML files.
-        .pipe(minifyInline())  //Minify the script tags in the HTML.
+        //.pipe(minifyHTML())  //Minify the HTML files.
+        //.pipe(minifyInline())  //Minify the script tags in the HTML.
         .pipe(htmlFilter.restore())
         .pipe(gulp.dest('./dist/views'));
 });
