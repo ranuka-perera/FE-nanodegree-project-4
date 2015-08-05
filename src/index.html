@@ -29,10 +29,7 @@
     <!-- Load the fonts asynchronously. Increases performance.-->
     <script src="js/loadFontAsync_inline.js" inline></script>
 
-    <!-- Load analytics & timing js asynchronously. -->
-    <!-- inline js/analyticsObject_inline.js as a <script> tag -->
-    <script src="js/analyticsObject_inline.js" inline></script>
-    <script async src="//www.google-analytics.com/analytics.js"></script>
+    <!-- Load Timing js asynchronously. -->
     <!-- build:js js/perfmatters.min.js async-->
     <script async src="js/perfmatters.js"></script>
     <!-- endbuild -->
@@ -89,5 +86,8 @@
     <footer>
       <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
     </footer>
-  </body>
+    <!-- Load Analytics asyncly -->
+    <!-- inline js/analyticsObject_inline.js as a <script> tag -->
+    <script src="js/analyticsObject_inline.js" inline></script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
 </html>
