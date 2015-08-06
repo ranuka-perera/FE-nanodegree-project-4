@@ -158,7 +158,7 @@ gulp.task('copyImages', function (){
 gulp.task('minifyCode', ['minMain', 'minPizza']);
 
 //Task to minify all files.
-gulp.task('default', ['minifyImages', 'minifyCode']);
+gulp.task('default', ['minifyImages', 'minifyCode', 'devImages', 'devMain', 'devPizza']);
 
 // Watch to minify all code.
 // Minify Code & Images once and run minifyCode on file update.
@@ -173,6 +173,6 @@ gulp.task('devwatch', ['devImages', 'devMain', 'devPizza'], function (){
 
 // Deploy to github gh-pages branch.
 gulp.task('deploy', ['devImages', 'devMain', 'devPizza', 'minifyImages', 'minifyCode'], function () {
-    return gulp.src('./d{ist,ev}/**/*')
+    return gulp.src(['./d{ist,ev}/**/*', './src/**/*'])
         .pipe(deploy());
 });

@@ -1,5 +1,23 @@
 ## Website Performance Optimization portfolio project
 
+### About the repo
+
+The website has 3 versions and 2 branches. The main development is done in the `src` folder of the dev branch. The master branch contains the `src` folder, `dev` folder & the `dist` folder.
+The contents in the folders are as follows.
+
+- src  ->   Contains the unprocessed source code. [weblink](https://ranuka-perera.github.io/FE-nanodegree-project-4/src/index.html)
+- dev  ->   Contains the sourcecode that is inlined and preprocessed. It is the final code before minification. [weblink](https://ranuka-perera.github.io/FE-nanodegree-project-4/dev/index.html)
+- dist ->   Preprocessed, inlined and minified code. [weblink](https://ranuka-perera.github.io/FE-nanodegree-project-4/dist/index.html)
+
+All of the code in all folders are runnable.
+
+### Pageinsights link
+
+The website has a PageSpeed Insight score of 92/100 in mobile and a 94/100 in desktop using the public github-pages servers.
+https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Franuka-perera.github.io%2FFE-nanodegree-project-4%2Fdist%2Findex.html
+
+### Gulp automated tasks.
+
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
 To get started, check out the repository, inspect the code,
