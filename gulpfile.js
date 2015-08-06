@@ -173,6 +173,6 @@ gulp.task('devwatch', ['devImages', 'devMain', 'devPizza'], function (){
 
 // Deploy to github gh-pages branch.
 gulp.task('deploy', ['devImages', 'devMain', 'devPizza', 'minifyImages', 'minifyCode'], function () {
-    return gulp.src(['./d{ist,ev}/**/*', './src/**/*'])
+    return gulp.src(['d{ist,ev}/**/*', 'src/**/*'], {base: '.'})
         .pipe(deploy());
 });
