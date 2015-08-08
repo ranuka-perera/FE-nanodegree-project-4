@@ -23,6 +23,7 @@ The workflow of developing the app is maintained by gulp tasks. This is the list
 - `gulp watch`    ->  Inline and minify the js & css, optimize images and create the dist directory. Rerun if the code changes.
 - `gulp devwatch` ->  Inline the (without minication) css & js, optimize the images and create dev directory. Rerun if the code changes.
 - `gulp deploy`   ->  Create the dev & dists directory and upload all those directories with the src directory to the `gh-pages` branch for web deployment.
+- `gulp`          ->  Similar to deploy, but without commiting to the branch.
 
 ### Some of the Optimisations done
 
