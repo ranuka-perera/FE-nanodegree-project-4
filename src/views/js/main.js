@@ -492,7 +492,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
   // Select the sliding pizzas in case it does not exist.
   movingPizzas = movingPizzas || document.getElementsByClassName('mover');
-  var doc_top = document.body.scrollTop / 1250;
+  var doc_top = (document.documentElement.scrollTop || document.body.scrollTop) / 1250;
   var phases = new Array(5);
   var i = 0;
   // Store the 5 unique phase values that needs to be applied to each sliding pizza.
@@ -502,7 +502,7 @@ function updatePositions() {
   for (i = 0; i < movingPizzas.length; i++) {
     var phase = phases[(i % 5)];
     // Slide the sliding pizzas.
-    movingPizzas[i].style.transform = 'translateX(' + (movingPizzas[i].basicLeft + 100 * phase) + 'px)';
+    movingPizzas[i].style.transform = 'translateX(' + (movingPizzas[i].basicLeft + (100 * phase)) + 'px)';
     //movingPizzas[i].style.left = movingPizzas[i].basicLeft + 100 * phase + 'px';
 
   }
@@ -518,7 +518,9 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
+window.addEventListener('scroll', function () {
+  window.requestAnimationFrame(updatePositions)
+});
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
